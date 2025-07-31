@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luxusuhr Konfigurator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+      background-repeat: repeat;
+      color: #f3f1eb;
+    }
+    header {
+      background: #4a2e0a;
+      border-bottom: 3px solid #d4af37;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #d4af37;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: rgba(18, 18, 18, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #a6783f;
+    }
+    select, button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #a6783f;
+      background: #1f1f1f;
+      color: #fff;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+    select[multiple] {
+      height: 140px;
+    }
+    button {
+      background: #d4af37;
+      color: #121212;
+      font-weight: bold;
+      margin-top: 30px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 40px;
+      padding: 20px;
+      background: #222;
+      border-radius: 12px;
+      border-left: 4px solid #d4af37;
+    }
+    a {
+      color: #d4af37;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Luxusuhr Konfigurator</h1>
+  </header>
+  <main>
+    <form onsubmit="showResult(); return false;">
+      <label for="brand">Marke</label>
+      <select id="brand" required>
+        <option value="" disabled selected>Marke wählen</option>
+        <option>Rolex</option>
+        <option>Breitling</option>
+        <option>Richard Mille</option>
+        <option>Omega</option>
+        <option>Patek Philippe</option>
+        <option>Audemars Piguet</option>
+        <option>Cartier</option>
+        <option>Jaeger-LeCoultre</option>
+        <option>IWC</option>
+        <option>Longines</option>
+        <option>Tudor</option>
+        <option>TAG Heuer</option>
+        <option>Panerai</option>
+        <option>Blancpain</option>
+        <option>Breguet</option>
+        <option>Hublot</option>
+        <option>Zenith</option>
+        <option>Chopard</option>
+        <option>Seiko</option>
+        <option>Tissot</option>
+      </select>
+
+      <label for="price">Preisklasse</label>
+      <select id="price" required>
+        <option value="" disabled selected>Preis wählen</option>
+        <option>unter 5.000€</option>
+        <option>5.000€ - 10.000€</option>
+        <option>10.000€ - 20.000€</option>
+        <option>20.000€ - 50.000€</option>
+        <option>50.000€ - 100.000€</option>
+        <option>5.000€ - 100.000€</option>
+        <option>über 100.000€</option>
+      </select>
+
+      <label for="occasion">Anlass</label>
+      <select id="occasion" required>
+        <option>Business</option>
+        <option>Sport</option>
+        <option>Alltag</option>
+        <option>Abend / Elegant</option>
+      </select>
+
+      <label for="style">Stil</label>
+      <select id="style" required>
+        <option>Klassisch</option>
+        <option>Modern</option>
+        <option>Elegant</option>
+        <option>Sportlich</option>
+      </select>
+
+      <label for="movement">Uhrwerk</label>
+      <select id="movement" required>
+        <option>Automatik</option>
+        <option>Quarz</option>
+        <option>Handaufzug</option>
+      </select>
+
+      <label for="band">Armband</label>
+      <select id="band" required>
+        <option>Leder</option>
+        <option>Metall</option>
+        <option>Kautschuk</option>
+      </select>
+
+      <label for="size">Gehäusegröße</label>
+      <select id="size" required>
+        <option>&lt; 38 mm</option>
+        <option>38 - 42 mm</option>
+        <option>&gt; 42 mm</option>
+      </select>
+
+      <label for="color">Farbe der Uhr</label>
+      <select id="color" required>
+        <option>Schwarz</option>
+        <option>Silber</option>
+        <option>Gold</option>
+        <option>Blau</option>
+        <option>Grün</option>
+        <option>Weiß</option>
+      </select>
+
+      <label for="material">Material des Gehäuses</label>
+      <select id="material" required>
+        <option>Edelstahl</option>
+        <option>Gold</option>
+        <option>Platin</option>
+        <option>Keramik</option>
+        <option>Carbon</option>
+        <option>Titan</option>
+      </select>
+
+      <label for="features">Besonderheiten (mehrere wählbar)</label>
+      <select id="features" multiple>
+        <option>GMT-Funktion</option>
+        <option>Chronograph</option>
+        <option>Tourbillon</option>
+        <option>Datumsanzeige</option>
+        <option>Mondphase</option>
+        <option>Skelettiertes Zifferblatt</option>
+      </select>
+
+      <label for="country">Land (für Händlerauswahl)</label>
+      <select id="country" required>
+        <option value="" disabled selected>Land wählen</option>
+        <option>Belgien</option>
+        <option>Bulgarien</option>
+        <option>Dänemark</option>
+        <option>Deutschland</option>
+        <option>Estland</option>
+        <option>Finnland</option>
+        <option>Frankreich</option>
+        <option>Griechenland</option>
+        <option>Irland</option>
+        <option>Italien</option>
+        <option>Lettland</option>
+        <option>Litauen</option>
+        <option>Luxemburg</option>
+        <option>Malta</option>
+        <option>Niederlande</option>
+        <option>Österreich</option>
+        <option>Polen</option>
+        <option>Portugal</option>
+        <option>Rumänien</option>
+        <option>Schweden</option>
+        <option>Schweiz</option>
+        <option>Slowakei</option>
+        <option>Slowenien</option>
+        <option>Spanien</option>
+        <option>Tschechien</option>
+        <option>Ungarn</option>
+        <option>Vereinigtes Königreich</option>
+        <option>Zypern</option>
+      </select>
+
+      <button type="submit">Uhr finden</button>
+    </form>
+
+    <div id="result"></div>
+  </main>
+
+  <script>
+    function showResult() {
+      const brand = document.getElementById("brand").value;
+      const price = document.getElementById("price").value;
+      const occasion = document.getElementById("occasion").value;
+      const style = document.getElementById("style").value;
+      const movement = document.getElementById("movement").value;
+      const band = document.getElementById("band").value;
+      const size = document.getElementById("size").value;
+      const color = document.getElementById("color").value;
+      const material = document.getElementById("material").value;
+      const country = document.getElementById("country").value;
+
+      const featuresSelect = document.getElementById("features");
+      const features = Array.from(featuresSelect.selectedOptions).map(opt => opt.value);
+
+      const searchQuery = `${brand} Uhr ${price} ${style} ${color} ${material} ${features.join(' ')}`;
+      const mainLink = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+      const altLinks = [
+        `https://www.google.com/search?q=${encodeURIComponent(brand + ' ' + style + ' Uhr')}`,
+        `https://www.google.com/search?q=${encodeURIComponent(brand + ' ' + material + ' Uhr')}`
+      ];
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `
+        <h2>Empfohlene Uhr</h2>
+        <p><a href="${mainLink}" target="_blank">👉 Passende Uhr beim Hersteller ansehen</a></p>
+        <p><strong>Marke:</strong> ${brand}</p>
+        <p><strong>Preisklasse:</strong> ${price}</p>
+        <p><strong>Stil:</strong> ${style}</p>
+        <p><strong>Material:</strong> ${material}</p>
+        <p><strong>Farbe:</strong> ${color}</p>
+        <p><strong>Besonderheiten:</strong> ${features.join(', ')}</p>
+        <h3>Alternative Vorschläge</h3>
+        <p><a href="${altLinks[0]}" target="_blank">🔁 Alternativlink 1</a></p>
+        <p><a href="${altLinks[1]}" target="_blank">🔁 Alternativlink 2</a></p>
+        <p><strong>Händler in ${country} finden:</strong> <a href="https://www.google.com/search?q=${encodeURIComponent(brand + ' Uhr Händler ' + country)}" target="_blank">🔍 Händler anzeigen</a></p>
+      `;
+    }
+  </script>
+</body>
+</html>
